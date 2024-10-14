@@ -19,7 +19,7 @@ def my_hander(sender, instance, **kwargs):
 > **Question 2:** Do django signals run in the same thread as the caller? Please support your answer with a code snippet that conclusively proves your stance. The code does not need to be elegant and production ready, we just need to understand your logic.
 
 Django signals run in the same thread as the caller by default. This means that when a signal is emitted, its connected receiver functions are executed synchronously within the same thread context.
-```
+```python
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.db import models
@@ -45,7 +45,7 @@ save_model()
 > **Question 3:** By default do django signals run in the same database transaction as the caller? Please support your answer with a code snippet that conclusively proves your stance. The code does not need to be elegant and production ready, we just need to understand your logic.
 
 By default, Django signals run in the same database transaction as the caller. This means that if a signal is sent during a transaction, the receivers of that signal will also execute within that same transaction context.
-```
+```python
 from django.db import models, transaction
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -83,7 +83,7 @@ save_model()
 3. When an instance of the Rectangle class is iterated over, we first get its length in the format:
  {'length': <VALUE_OF_LENGTH>} followed by the width {width: <VALUE_OF_WIDTH>}
 
-```
+```python
 class Rectangle:
     def __init__(self, length, width):
         self.length = length
