@@ -5,7 +5,7 @@
 > **Question 1:** By default are django signals executed synchronously or asynchronously? Please support your answer with a code snippet that conclusively proves your stance. The code does not need to be elegant and production ready, we just need to understand your logic.
 
 By default, Django signals are executed synchronously. This means that when a signal is sent, all connected receiver functions are called immediately in the order they were registered, blocking the execution of further code until all receivers have completed.
-```
+```python
 from django.db.models.signals import post_save
 from django.dispatch import reciever
 
